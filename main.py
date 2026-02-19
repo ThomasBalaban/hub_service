@@ -81,6 +81,26 @@ async def relay_event_scored(sid, data):
 async def relay_ai_context_suggestion(sid, data):
     await sio.emit("ai_context_suggestion", data, skip_sid=sid)
 
+@sio.on("text_update")
+async def relay_text_update(sid, data):
+    await sio.emit("text_update", data, skip_sid=sid)
+
+@sio.on("transcript")
+async def relay_transcript(sid, data):
+    await sio.emit("transcript", data, skip_sid=sid)
+
+@sio.on("vision_context")
+async def relay_vision_context(sid, data):
+    await sio.emit("vision_context", data, skip_sid=sid)
+
+@sio.on("spoken_word_context")
+async def relay_spoken_word_context(sid, data):
+    await sio.emit("spoken_word_context", data, skip_sid=sid)
+
+@sio.on("audio_context")
+async def relay_audio_context(sid, data):
+    await sio.emit("audio_context", data, skip_sid=sid)
+
 # UI → Director control events (forwarded to director)
 @sio.on("set_streamer")
 async def relay_set_streamer(sid, data):
