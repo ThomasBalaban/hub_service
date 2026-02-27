@@ -118,6 +118,17 @@ async def relay_set_streamer_lock(sid, data):
 async def relay_set_context_lock(sid, data):
     await sio.emit("set_context_lock", data, skip_sid=sid)
 
+@sio.on("save_memory")
+async def relay_save_memory(sid, data):
+    await sio.emit("save_memory", data, skip_sid=sid)
+
+@sio.on("query_memories")
+async def relay_query_memories(sid, data):
+    await sio.emit("query_memories", data, skip_sid=sid)
+
+@sio.on("memory_results")
+async def relay_memory_results(sid, data):
+    await sio.emit("memory_results", data, skip_sid=sid)
 
 if __name__ == "__main__":
     print(f"🚀 Nami Central Hub starting on port {HUB_PORT}...")
