@@ -125,13 +125,13 @@ async def relay_transcript(sid, data):
 
 
 # --- output from Sensory Data ---
-@sio.on("classified_event")
-async def relay_classified_event(sid, data):
-    await sio.emit("classified_event", data, skip_sid=sid)
+@sio.on("continuous_context")
+async def relay_continuous_context(sid, data):
+    await sio.emit("continuous_context", data, skip_sid=sid)
 
-@sio.on("ai_context")
-async def relay_ai_context(sid, data):
-    await sio.emit("ai_context", data, skip_sid=sid)
+@sio.on("ai_response")
+async def relay_ai_response(sid, data):
+    await sio.emit("ai_response", data, skip_sid=sid)
 
 # --- Memory Service ---
 @sio.on("save_memory")
